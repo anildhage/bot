@@ -1,0 +1,57 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "bootstrap: create .venv",
+            "type": "shell",
+            "command": "python3 -m venv .venv",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "bootstrap: install requirements",
+            "type": "shell",
+            "command": ". .venv/bin/activate && python -m pip install --upgrade pip && pip install -r requirements.txt",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "bootstrap: full setup",
+            "dependsOn": [
+                "bootstrap: create .venv",
+                "bootstrap: install requirements"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "test: pytest",
+            "type": "shell",
+            "command": ". .venv/bin/activate && pytest",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "app: init",
+            "type": "shell",
+            "command": ". .venv/bin/activate && python main.py init",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "app: status",
+            "type": "shell",
+            "command": ". .venv/bin/activate && python main.py status",
+            "problemMatcher": [],
+            "group": "build"
+        },
+        {
+            "label": "app: demo",
+            "type": "shell",
+            "command": ". .venv/bin/activate && python main.py demo",
+            "problemMatcher": [],
+            "group": "build"
+        }
+    ]
+}
